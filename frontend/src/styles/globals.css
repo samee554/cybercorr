@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Backgrounds */
+  --bg-base:        #0a0e17;   /* Page background — deep navy-black */
+  --bg-surface:     #111827;   /* Card/panel surface */
+  --bg-elevated:    #1c2333;   /* Modal, dropdown, hover states */
+  --bg-border:      #2a3548;   /* Subtle borders */
+
+  /* Primary — terminal green (data is alive) */
+  --green-bright:   #00ff88;   /* Live indicators, active connections */
+  --green-dim:      #00cc6a;   /* Secondary active states */
+  --green-muted:    #1a4d35;   /* Background tints for success states */
+
+  /* Risk Severity — escalating urgency */
+  --risk-critical:  #ff2d55;   /* CRITICAL — red, immediate action */
+  --risk-high:      #ff8c00;   /* HIGH — orange, investigate now */
+  --risk-medium:    #ffd60a;   /* MEDIUM — yellow, monitor */
+  --risk-low:       #5ac8fa;   /* LOW — blue, informational */
+
+  /* Quantum — distinct from threat colors */
+  --quantum-accent: #bf5af2;   /* Purple — quantum risk indicators */
+  --quantum-dim:    #4a1f6b;   /* Quantum background tints */
+
+  /* Text */
+  --text-primary:   #e8edf5;   /* Main content */
+  --text-secondary: #8899aa;   /* Labels, metadata */
+  --text-muted:     #4a5568;   /* Timestamps, secondary IDs */
+  --text-mono:      #a8d8a8;   /* Monospace data — slight green tint */
+
+  /* Data visualization */
+  --chart-1:        #00ff88;
+  --chart-2:        #5ac8fa;
+  --chart-3:        #bf5af2;
+  --chart-4:        #ff8c00;
+  --chart-5:        #ff2d55;
+
+  /* Typography Scale */
+  --font-display:   'JetBrains Mono', 'Fira Code', monospace;  /* IDs, data, values */
+  --font-body:      'Inter', system-ui, sans-serif;            /* All prose, labels */
+
+  /* Sizes */
+  --text-xs:    11px;   /* Timestamps, secondary metadata */
+  --text-sm:    13px;   /* Alert card body, table rows */
+  --text-base:  15px;   /* Default body text */
+  --text-lg:    18px;   /* Panel headers */
+  --text-xl:    24px;   /* Page-level numbers */
+  --text-2xl:   32px;   /* Dashboard headline stats */
+
+  /* Weights */
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-semibold: 600;
+  --weight-bold:    700;
+
+  /* Spacing Scale (4px base) */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Layout */
+  --header-height: 56px;
+  --sidebar-width: 0px;    /* No sidebar — 3-column content grid */
+}
+
+/* Reset and base styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Animations */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseBorderColor {
+  0%, 100% {
+    border-left-color: var(--risk-critical);
+  }
+  50% {
+    border-left-color: rgba(255, 45, 85, 0.4);
+  }
+}
+
+.animate-alert-card {
+  animation: slideUpFade 200ms ease-out forwards;
+}
+
+.animate-border-critical {
+  animation: pulseBorderColor 2s infinite ease-in-out;
+}
+
+@keyframes wsPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.4);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 8px 2px rgba(0, 255, 136, 0.7);
+  }
+}
+
+.ws-pulse {
+  animation: wsPulse 1.5s infinite ease-in-out;
+}
+
+

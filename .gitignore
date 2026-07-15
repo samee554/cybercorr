@@ -1,0 +1,22 @@
+# Environments
+.env
+.env.local
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Frontend dependencies and builds
+node_modules/
+dist/
+dist-ssr/
+
+# Logs
+*.log
