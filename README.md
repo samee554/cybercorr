@@ -26,31 +26,31 @@ CyberCorr is a real-time, full-stack AI cybersecurity and fraud correlation plat
 ## System Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                        FRONTEND (React/Vite)                    │
-│   ThreatFeed │ CorrelationGraph │ QuantumPanel │ FraudHeatmap   │
-└────────────────────────┬────────────────────────────────────────┘
-                         │ HTTP + WebSocket (port 5173 → 8000)
-┌────────────────────────▼────────────────────────────────────────┐
-│                      BACKEND (FastAPI :8000)                    │
-│                                                                 │
-│  ┌─────────────┐  ┌──────────────┐  ┌──────────────────────┐   │
-│  │  Simulator  │  │  Correlator  │  │   Alert Manager      │   │
-│  │  (faker +   │→ │  (time-win   │→ │   (deduplicate,      │   │
-│  │   scripts)  │  │   join +     │  │    expire, WS        │   │
-│  └─────────────┘  │   entity     │  │    broadcast)        │   │
-│                   │   graph)     │  └──────────┬───────────┘   │
-│  ┌──────────────┐ └──────────────┘             │               │
-│  │  Fraud ML    │  ┌──────────────┐            │               │
-│  │  (Isolation  │  │  Quantum     │────────────┘               │
-│  │   Forest)    │  │  Detector    │                             │
-│  └──────────────┘  │  (5 rules)   │                             │
-│                    └──────────────┘                             │
-│  ┌──────────────────────────────────────────────────────────┐   │
-│  │         AI Explainer (Groq llama-3.3-70b-versatile)       │   │
-│  │   Threat brief • Risk level • Attack pattern • Actions   │   │
-│  └──────────────────────────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────────────┘
+  ┌─────────────────────────────────────────────────────────────────┐
+  │                        FRONTEND (React/Vite)                    │
+  │   ThreatFeed │ CorrelationGraph │ QuantumPanel │ FraudHeatmap   │
+  └────────────────────────┬────────────────────────────────────────┘
+                           │ HTTP + WebSocket (port 5173 → 8000)
+  ┌────────────────────────▼────────────────────────────────────────┐
+  │                      BACKEND (FastAPI :8000)                    │
+  │                                                                 │
+  │  ┌─────────────┐  ┌──────────────┐  ┌──────────────────────┐    │
+  │  │  Simulator  │  │  Correlator  │  │   Alert Manager      │    │
+  │  │  (faker +   │→ │  (time-win   │→ │   (deduplicate,      │    │
+  │  │   scripts)  │  │   join +     │  │    expire, WS        │    │
+  │  └─────────────┘  │   entity     │  │    broadcast)        │    │
+  │                   │   graph)     │  └──────────┬───────────┘    │
+  │  ┌──────────────┐ └──────────────┘             │                │
+  │  │  Fraud ML    │  ┌──────────────┐            │                │
+  │  │  (Isolation  │  │  Quantum     │────────────┘                │
+  │  │   Forest)    │  │  Detector    │                             │
+  │  └──────────────┘  │  (5 rules)   │                             │
+  │                    └──────────────┘                             │
+  │  ┌──────────────────────────────────────────────────────────┐   │
+  │  │         AI Explainer (Groq llama-3.3-70b-versatile)      │   │
+  │  │   Threat brief • Risk level • Attack pattern • Actions   │   │
+  │  └──────────────────────────────────────────────────────────┘   │
+  └─────────────────────────────────────────────────────────────────┘
 ```
 
 ---
